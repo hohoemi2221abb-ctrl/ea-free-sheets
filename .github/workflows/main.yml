@@ -1,0 +1,23 @@
+name: Claude API Workflow
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+# ▼ これが最も重要な設定（OIDC認証用）です ▼
+permissions:
+  id-token: write
+  contents: read
+# ▲ ここまで ▲
+
+jobs:
+  run-claude-api:
+    runs-on: ubuntu-latest
+    steps:
+      - name: リポジトリのチェックアウト
+        uses: actions/checkout@v4
+
+      - name: テスト実行
+        run: echo "ここにClaude APIを呼び出すPythonスクリプトなどの実行コマンドを書きます"
